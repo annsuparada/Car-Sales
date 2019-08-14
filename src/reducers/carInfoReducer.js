@@ -17,6 +17,19 @@ const initialState = {
 
   export const carInfoReducer = (state = initialState, action) => {
     switch (action.type) {
+      case 'ADD_ITEM':
+        if(state.car.features.map(item => item.id).includes(action.payload.id)) return state
+        return{
+            ...state,
+            additionalPrice: state.additionalPrice + action.payload.price,
+            car: {...state.car, features: [...state.car.features, action.payload]}
+        }
+      case 'REMOVE_ITEM':
+        return {
+          ...state,
+          additionalPrice: state.additionalPrice - action.payload.price,
+          car: {...state.car, features: state.car.features.filter(item => item.id !== action.payload.id)}
+        }
       
       default:
         return state;

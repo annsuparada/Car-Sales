@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const Header = props => {
   return (
     <>
-      <figure className="image is-128x128">
+      <figure className="image is-200x200">
         <img src={props.carOnProps} alt={props.carAltOnProps} />
       </figure>
       <h2>{props.carNameOnProps}</h2>
@@ -14,7 +14,6 @@ const Header = props => {
 };
 
 const mapStateToProps = state => {
-  console.log('Header', state);
   return {
     carOnProps: state.car.image,
     carAltOnProps: state.car.name,
